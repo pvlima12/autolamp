@@ -42,8 +42,8 @@ class CrudSala {
         
           public function querySeleciona($id){
         try{
-            $con = new conecta();
-            $stmt = $con->conectar()->prepare("SELECT * FROM `equipamento` WHERE `id` = :id;");
+            $con = new conexao();
+            $stmt = $con->conectar()->prepare("SELECT * FROM `sala` WHERE `id` = :id;");
             $stmt->bindParam(":id", $id);
             $stmt->execute();
             return $stmt->fetchAll();
@@ -55,8 +55,8 @@ class CrudSala {
 
     public function queryDelete($id) {
         try {
-            $con = new conecta();
-            $stmt = $con->conectar()->prepare("DELETE FROM `equipamento` WHERE `id` = :id;");
+            $con = new conexao();
+            $stmt = $con->conectar()->prepare("DELETE FROM `sala` WHERE `id` = :id;");
             $stmt->bindParam(":id", $id, PDO::PARAM_INT);
             if ($stmt->execute()) {
                 return 'ok';
@@ -69,14 +69,13 @@ class CrudSala {
         }
     }
 
-    public function queryUpdate($id,$nome,$cod){
+    public function queryUpdate($id,$nome){
         try {
-            $con = new conecta();
+            $con = new conexao();;
 
-            $stmt = $con->conectar()->prepare("UPDATE `equipamento` SET  `nome` = :nome,`cod_porta` = :cod WHERE `id` = :id;");
+            $stmt = $con->conectar()->prepare("UPDATE `sala` SET  `nome` = :nome WHERE `id` = :id;");
             $stmt->bindParam(":id", $id, PDO::PARAM_INT);
             $stmt->bindParam(":nome", $nome, PDO::PARAM_STR);
-            $stmt->bindParam(":cod", $cod);
             if ($stmt->execute()) {
                 return 'ok';
             } else {
