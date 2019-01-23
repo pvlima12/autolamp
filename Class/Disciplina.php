@@ -5,7 +5,8 @@ class Disciplina {
     private $nome;
     private $cod_disciplina;
     private $csrgaHoraria;
-
+    private $sala_id;
+    private $professor_id;
     function getNome() {
         return $this->nome;
     }
@@ -29,5 +30,21 @@ class Disciplina {
     function setCsrgaHoraria($csrgaHoraria) {
         $this->csrgaHoraria = $csrgaHoraria;
     }
+    function getSala_id() {
+        return $this->sala_id;
+    }
+
+    function getProfessor_id() {
+        return $this->professor_id;
+    }
+
+    function setSala_id($sala_id) {
+        $this->sala_id = $sala_id;
+    }
+
+    function setProfessor_id($professor_id) {
+        $this->professor_id = $professor_id;
+    }
+
 
 }

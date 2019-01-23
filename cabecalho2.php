@@ -113,13 +113,13 @@
                 <!-- Dropdown Structure -->
                 <ul id="dropdown_dis" class="dropdown-content  collection">
                     <li class="nav-item">
-                        <a class="nav-link" href="conf_disciplina.php">Configurar Disciplina</a>
+                        <a class="nav-link" href="ConfiguraDisciplina.php">Configurar Disciplina</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="lista-disciplina.php">Listar Disciplina</a>
+                        <a class="nav-link" href="ListaDisciplina.php">Listar Disciplina</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="adiciona-disciplina.php">Cadastrar Disciplina</a>
+                        <a class="nav-link" href="AdicionaDisciplina.php">Cadastrar Disciplina</a>
                     </li>
 
 
