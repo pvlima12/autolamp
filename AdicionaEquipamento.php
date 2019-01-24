@@ -70,9 +70,6 @@ verificaUsuario();
 
             </div>
         </div> 
-
-        </table>
-
     </form>
 </div>
 <?php

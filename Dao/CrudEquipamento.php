@@ -60,6 +60,19 @@ class CrudEquipamento {
         }
     }
     
+    
+             public function querySeleciona3($id){
+        try{
+            $con = new conecta();
+            $stmt = $con->conectar()->prepare("SELECT equipamento.nome, equipamento.id FROM equipamento, sala WHERE equipamento.cod_equipamento = sala.id and sala.id = :id;");
+            $stmt->bindParam(":id", $id);
+            $stmt->execute();
+            return $stmt->fetchAll();
+        } catch (PDOException $ex) {
+            return 'error '.$ex->getMessage();
+        }
+    }
+       
 
     public function queryDelete($id) {
         try {
