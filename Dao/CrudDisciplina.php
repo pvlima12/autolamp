@@ -1,20 +1,33 @@
 <?php
-include './Class/conecta.php'; 
-class CrudEquipamento {
-  
-    
-    public function queryInsert($nome,$cod_porta,$cod_sala) {
+
+include './Class/conecta.php';
+
+class CrudDisciplina {
+
+    public function queryInsert($id,$nome,$carga_horaria,$sala_id,$professor_id) {
 
         try {
-            $con = new conecta();
 
-            $stmt = $con->conectar()->prepare("INSERT INTO `equipamento` (`nome`,`cod_porta`,`cod_equipamento`) VALUES (:nome,:cod_porta,:cod_sala);");
-            $stmt->bindParam(':nome', $nome);
-            $stmt->bindParam(':cod_porta', $cod_porta);
-            $stmt->bindParam(':cod_sala', $cod_sala);
-            if ($stmt->execute()) {
+            $con = new conexao();
+  
+            $query = $con->conectar()->prepare("SELECT * FROM disciplina WHERE nome=:nome and"
+                    . "id=:id");
+            $query->bindParam(':nome', $nome);
+            $query->bindParam(':id', $id);
+            $query->execute();
+            $retorno = $query->rowCount();
+            if ($retorno == 0) {
+
+                $stmt = $con->conectar()->prepare("INSERT INTO `disciplina` (`id`,`nome`,`carga_horaria`, `sala_id`,`professor_id`) VALUES (:id,:nome,:carga_horaria,:sala_id,:professor_id);");
+                $stmt->bindParam(':id', $id);
+                $stmt->bindParam(':nome', $nome);
+                $stmt->bindParam(':carga_horaria', $carga_horaria);
+                $stmt->bindParam(':sala_id', $sala_id);
+                $stmt->bindParam(':professor_id', $professor_id);
+                $stmt->execute();
                 return 'ok';
             } else {
+
                 return 'erro';
             }
         } catch (ErrorException $ex) {
@@ -22,10 +35,22 @@ class CrudEquipamento {
             . "<p>Verifique a sua conexão com a Internet</p>";
         }
     }
-
-    public function querySelect() {
+  public function querySelect3() {
         try {
             
+            $con = new conexao();
+
+            $stmt = $con->conectar()->prepare("SELECT * from sala");
+            $stmt->execute();
+            return $stmt->fetchAll();
+        } catch (ErrorException $ex) {
+            echo "<p>Atenção!! Falha na conexao com o banco de dados....</p><br>"
+            . "<p>Verifique a sua conexão com a Internet</p>";
+        }
+        }
+    public function querySelect() {
+        try {
+
             $con = new conecta();
 
             $stmt = $con->conectar()->prepare("SELECT e.id,e.nome as nome_equi,p.nome as nome_porta ,s.nome as nome_sala from equipamento e ,porta p, sala s where e.cod_porta=p.id and e.cod_equipamento=s.id");
@@ -35,21 +60,22 @@ class CrudEquipamento {
             echo "<p>Atenção!! Falha na conexao com o banco de dados....</p><br>"
             . "<p>Verifique a sua conexão com a Internet</p>";
         }
-        }
-        
-          public function querySeleciona($id){
-        try{
+    }
+
+    public function querySeleciona($id) {
+        try {
             $con = new conecta();
             $stmt = $con->conectar()->prepare("SELECT * FROM `equipamento` WHERE `id` = :id;");
             $stmt->bindParam(":id", $id);
             $stmt->execute();
             return $stmt->fetchAll();
         } catch (PDOException $ex) {
-            return 'error '.$ex->getMessage();
+            return 'error ' . $ex->getMessage();
         }
     }
-          public function querySeleciona2($id){
-        try{
+
+    public function querySeleciona2($id) {
+        try {
             $con = new conecta();
             $stmt = $con->conectar()->prepare("SELECT p.nome as nome_porta,p.id as porta_id from "
                     . "equipamento e ,porta p, sala s where e.cod_porta=p.id and e.cod_equipamento=s.id and e.cod_porta = :id;");
@@ -57,23 +83,9 @@ class CrudEquipamento {
             $stmt->execute();
             return $stmt->fetchAll();
         } catch (PDOException $ex) {
-            return 'error '.$ex->getMessage();
+            return 'error ' . $ex->getMessage();
         }
     }
-    
-    
-             public function querySeleciona3($id){
-        try{
-            $con = new conecta();
-            $stmt = $con->conectar()->prepare("SELECT equipamento.nome, equipamento.id FROM equipamento, sala WHERE equipamento.cod_equipamento = sala.id and sala.id = :id;");
-            $stmt->bindParam(":id", $id);
-            $stmt->execute();
-            return $stmt->fetchAll();
-        } catch (PDOException $ex) {
-            return 'error '.$ex->getMessage();
-        }
-    }
-       
 
     public function queryDelete($id) {
         try {
@@ -91,7 +103,7 @@ class CrudEquipamento {
         }
     }
 
-    public function queryUpdate($id,$nome,$cod){
+    public function queryUpdate($id, $nome, $cod) {
         try {
             $con = new conecta();
 
@@ -105,9 +117,9 @@ class CrudEquipamento {
                 return 'erro';
             }
         } catch (PDOException $ex) {
-          echo "<p>Atenção!! Falha na conexao com o banco de dados....</p><br>"
+            echo "<p>Atenção!! Falha na conexao com o banco de dados....</p><br>"
             . "<p>Verifique a sua conexão com a Internet</p>";
         }
     }
-    
+
 }
