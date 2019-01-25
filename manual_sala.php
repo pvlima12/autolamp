@@ -16,13 +16,13 @@ socket_connect($sock, $host, $port);
 // Executa a ação correspondente ao botão apertado.
 if (isset($_POST['bits'])) {
     $msg = $_POST['bits'];
-    if (isset($_POST['Fora'])) {
+    /*if (isset($_POST['Fora'])) {
         if ($msg[0] == '1') {
             $msg[0] = '0';
         } else {
             $msg[0] = '1';
         }
-    }
+    }*/
     if (isset($_POST['Quarto1'])) {
         if ($msg[1] == '1') {
             $msg[1] = '0';

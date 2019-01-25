@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+        <file>
+            <url>manual_sala.php</url>
+            <bookmark id="1">
+                <name/>
+                <line>0</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/xampp/htdocs/Ambiente_desenvolvimento/projetos/autolamp/manual_sala.php</file>
-            <file>file:/C:/xampp/htdocs/Ambiente_desenvolvimento/projetos/autolamp/Dao/CrudSala.php</file>
+            <file>file:/C:/xampp/htdocs/Ambiente_desenvolvimento/projetos/autolamp/ListaEquipamento.php</file>
             <file>file:/C:/xampp/htdocs/Ambiente_desenvolvimento/projetos/autolamp/Manual.php</file>
-            <file>file:/C:/xampp/htdocs/Ambiente_desenvolvimento/projetos/autolamp/AdicionaEquipamento.php</file>
             <file>file:/C:/xampp/htdocs/Ambiente_desenvolvimento/projetos/autolamp/EditarProfessor.php</file>
             <file>file:/C:/xampp/htdocs/Ambiente_desenvolvimento/projetos/autolamp/Dao/CrudEquipamento.php</file>
         </group>

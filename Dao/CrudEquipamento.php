@@ -73,7 +73,17 @@ class CrudEquipamento {
             return 'error '.$ex->getMessage();
         }
     }
-       
+             public function querySelecionaN(){
+        try{
+            $con = new conecta();
+            $stmt = $con->conectar()->prepare("SELECT e.nome as nome_equip,p.nome as porta_nome from equipamento e, porta p where e.cod_porta=p.id and e.nome = :nome;");
+            $stmt->bindParam(":nome", $nome);
+            $stmt->execute();
+            return $stmt->fetchAll();
+        } catch (PDOException $ex) {
+            return 'error '.$ex->getMessage();
+        }
+    }
 
     public function queryDelete($id) {
         try {
