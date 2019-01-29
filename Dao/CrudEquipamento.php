@@ -101,14 +101,15 @@ class CrudEquipamento {
         }
     }
 
-    public function queryUpdate($id,$nome,$cod){
+    public function queryUpdate($id,$nome,$cod_porta,$cod_sala){
         try {
             $con = new conecta();
 
-            $stmt = $con->conectar()->prepare("UPDATE `equipamento` SET  `nome` = :nome,`cod_porta` = :cod WHERE `id` = :id;");
+            $stmt = $con->conectar()->prepare("UPDATE `equipamento` SET  `nome` = :nome,`cod_porta` = :cod ,`cod_equipamento` = :cod_sala WHERE `id` = :id;");
             $stmt->bindParam(":id", $id, PDO::PARAM_INT);
             $stmt->bindParam(":nome", $nome, PDO::PARAM_STR);
-            $stmt->bindParam(":cod", $cod);
+            $stmt->bindParam(":cod", $cod_porta);
+            $stmt->bindParam(":cod_sala", $cod_sala);
             if ($stmt->execute()) {
                 return 'ok';
             } else {

@@ -41,10 +41,11 @@ include './Class/Equipamento.php';
 
             $equipamento->setId(isset($_POST['alterar_id']) ? $_POST['alterar_id'] : '');
             $equipamento->setNome(isset($_POST['nome']) ? $_POST['nome'] : '');
-            $equipamento->setCod_equipamento(isset($_POST['cod_porta']) ? $_POST['cod_porta'] : '');
+            $equipamento->setCod_porta(isset($_POST['cod_porta']) ? $_POST['cod_porta'] : '');
+            $equipamento->setCod_sala(isset($_POST['cod_sala']) ? $_POST['cod_sala'] : '');
 
 
-            $resultado = $objdao->queryUpdate($equipamento->getId(), $equipamento->getNome(),$equipamento->getCod_equipamento());
+            $resultado = $objdao->queryUpdate($equipamento->getId(), $equipamento->getNome(),$equipamento->getCod_porta(),$equipamento->getCod_sala());
            if ($resultado == "ok") { 
             ?>
     <div><span style="position:absolute; display:block;text-align: center;
